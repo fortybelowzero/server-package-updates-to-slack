@@ -5,6 +5,8 @@ Cron-able Bash Script to identify new [ yum | apt-get ] updates and installation
 I created this to better track when package updates had been automatically installed on a server, with a view to spotting
 when a service or server needs restarting to make use of security updates etc.
 
+Note this idenfities packages that HAVE been installed/updated, not ones that could be - it assumes you have automatic updating set up on your server.
+
 ## Pre-requistes
 
 This script will run under RHEL/Centos and Ubuntu (it will detect which and use either rpm (Yum on Redhat/Centos) or /var/log/dpkg.log (apt-get on Ubuntu). Other Distros are not supported, tho feel free to send a Pull request if you amend this.
