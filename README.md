@@ -1,4 +1,4 @@
-# server-package-updates-to-slack
+# Server package updates/installs sent as Slack Notifications
 
 Cron-able Bash Script to identify new [ yum | apt-get ] updates and installations on a server and send them as a notification to Slack.
 
