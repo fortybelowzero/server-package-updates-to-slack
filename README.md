@@ -1,6 +1,6 @@
 # server-package-updates-to-slack
 
-Cron-able Bash Script to identify new [ yum | apt-get ] updates and installations on a server and send them to Slack.
+Cron-able Bash Script to identify new [ yum | apt-get ] updates and installations on a server and send them as a notification to Slack.
 
 I created this to better track when package updates had been automatically installed on a server, with a view to spotting
 when a service or server needs restarting to make use of security updates etc.
