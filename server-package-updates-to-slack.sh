@@ -13,7 +13,7 @@
 #   (assuming you place the script at /opt/fortybelowzero/server-package-updates-to-slack/server-package-updates-to-slack.sh )
 #
 # Author: Rick Harrison; 
-# Version: 1.0.0  -- 6th January 2018
+# Version: 1.0.1  -- 6th January 2018
 #
 # Note: My bash-fu is a bit rusty - feel free to propose improvements to how this works!
 
@@ -66,7 +66,7 @@ NOWTIME=$(date -d 'NOW'  +"%F")
 
 # --------------- DEAL WITH PACKAGES INSTALLED IF LINUX DISTRIBUTION IS REDHAT OR CENTOS ------------------
 
-if [[ $DISTRO == *"redhat"* ]] || [[ $DISTRO == *"centos"* ]] ; then
+if [[ ${DISTRO,,} == *"redhat"* ]] || [[ ${DISTRO,,} == *"centos"* ]] ; then
     rpm -qa --last | head -30 | while read -a linearray ; do
         PACKAGE=${linearray[0]}
         DATETIMESTR="${linearray[1]} ${linearray[2]} ${linearray[3]} ${linearray[4]} ${linearray[5]} ${linearray[6]}"
@@ -78,9 +78,9 @@ if [[ $DISTRO == *"redhat"* ]] || [[ $DISTRO == *"centos"* ]] ; then
 
 # --------------- DEAL WITH PACKAGES INSTALLED IF LINUX DISTRIBUTION IS UBUNTU ------------------
 
-elif [[ $DISTRO == *"ubuntu"* ]] ; then
+elif [[ ${DISTRO,,} == *"ubuntu"* ]] ; then
 
-    cat /var/log/dpkg.log | grep "\ install\ " | tail -n 30 | while read -a linearray ; do
+    cat /var/log/dpkg.log | grep "\ installed\ " | tail -n 30 | while read -a linearray ; do
         PACKAGE="${linearray[3]} ${linearray[4]} ${linearray[5]}"
         DATETIMESTR="${linearray[0]} ${linearray[1]}"
         INSTALLTIME=$(date --date="$DATETIMESTR" +"%s")
